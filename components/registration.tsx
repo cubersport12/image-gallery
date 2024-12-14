@@ -4,7 +4,6 @@ import {signUpWithCredentials} from '@/actions';
 import {Label} from '@/components/ui/label';
 import {Input} from '@/components/ui/input';
 import {Button} from '@/components/ui/button';
-import {useFormStatus} from 'react-dom';
 import {useState} from 'react';
 const RegistrationForm = () => {
   const [password, setPassword] = useState<Partial<Record<'password' | 'password2', string>>>({});

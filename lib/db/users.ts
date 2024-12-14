@@ -1,10 +1,10 @@
+'use server';
 import {db, users} from '@/schema';
 import {eq} from 'drizzle-orm';
 import {saltAndHashPassword} from '@/lib/hash';
 
-
-
 export const findUserByEmail = async (email: string) => {
+  // const c = await getFromRedis(`findUserByEmail:${email}`);
   const r = await db.select({
     id: users.id,
     name: users.name,

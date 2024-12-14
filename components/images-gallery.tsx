@@ -1,6 +1,6 @@
 'use client';
 import {useEffect, useState} from 'react';
-import {deleteImage, fetchPreviewImages} from '@/lib/db/files';
+import {deleteImage, fetchImages} from '@/lib/db/files';
 import {ImageDto, ImageVm} from '@/lib/types';
 import ImageCard from '@/components/image-card';
 import UploadImage from '@/components/upload-image';
@@ -27,7 +27,7 @@ const ImagesGallery = () => {
   };
   useEffect(() => {
     const load = async () => {
-      const data = await fetchPreviewImages();
+      const data = await fetchImages();
       setImages(data.map(x => convertImageDtoToVm(x)));
     };
     void load();

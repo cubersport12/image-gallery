@@ -6,7 +6,7 @@ import Image from 'next/image';
 import {convertImageDtoToVm} from '@/lib/images';
 import {Button} from '@/components/ui/button';
 import {ChevronLeft, ChevronRight} from 'lucide-react';
-import {redirect} from 'next/navigation';
+import {redirect, RedirectType} from 'next/navigation';
 
 const CarouselImage = ({ id }: { id: string }) => {
   const [image, setImage] = useState<ImageVm | null>(null);
@@ -15,6 +15,7 @@ const CarouselImage = ({ id }: { id: string }) => {
     const load = async () => {
       const i = await findImage(id);
       const ids = await fetchImagesIds();
+      console.info('fetch------>', i, ids);
       setImage(convertImageDtoToVm(i));
       setIds(ids);
     };
@@ -39,7 +40,7 @@ const CarouselImage = ({ id }: { id: string }) => {
   const handleLeft = () => {
     const id = getId(-1);
     if (id != null) {
-      redirect(`/carousel/${id}`);
+      redirect(`/carousel/${id}`, RedirectType.push);
     }
   };
   const handleRight = () => {
